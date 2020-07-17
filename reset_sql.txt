@@ -1,0 +1,3 @@
+UPDATE players
+   SET seikai=0, gotou1=0, reset1=false, gotou2=0, 
+       reset2=false, gotou3=0

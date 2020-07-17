@@ -1,0 +1,123 @@
+@page
+@model QuizKnock12HourPlayer.Pages_Players.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>@Model.Players.Username</h1>
+<hr />
+<div class="row">
+    <div class="col-sm">
+        <div>得点</div>
+        <div>@Model.Players.Tokuten()</div>
+    </div>
+    <div class="col-sm">
+        <div>n</div>
+        <div>@Model.Players.NextDownPoint()</div>
+    </div>
+    <div class="col-sm">
+        <div>正解数</div>
+        <div>@Model.Players.Seikai</div>
+    </div>
+    <div class="col-sm">
+        <div>誤答数</div>
+        <div>@Model.Players.Goto()</div>
+    </div>
+    <div class="col-sm">
+        <div>リセット回数</div>
+        <div>@Model.Players.ResetKaisu()</div>
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Players.Userid" />
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm">
+                        <label asp-for="Players.Username" class="control-label">プレイヤー名</label>
+                        <input asp-for="Players.Username" class="form-control" />
+                        <span asp-validation-for="Players.Username" class="text-danger"></span>
+                    </div>
+                    <div class="col-sm">
+                        <label class="control-label">現在値</label>
+                        <div name="value">@Model.Players.Username</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm">
+                        <label asp-for="Players.Seikai" class="control-label">正解数</label>
+                        <input asp-for="Players.Seikai" class="form-control" />
+                        <span asp-validation-for="Players.Seikai" class="text-danger"></span>
+                    </div>
+                    <div class="col-sm">
+                        <label class="control-label">現在値</label>
+                        <div name="value">@Model.Players.Seikai</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm">
+                        <label asp-for="Players.Gotou1" class="control-label">誤答数1</label>
+                        <input asp-for="Players.Gotou1" class="form-control" />
+                        <span asp-validation-for="Players.Gotou1" class="text-danger"></span>
+                    </div>
+                    <div class="col-sm">
+                        <label class="control-label">現在値</label>
+                        <div name="value">@Model.Players.Gotou1</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Players.Reset1" /> @Html.DisplayNameFor(model => model.Players.Reset1)
+                </label>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm">
+                        <label asp-for="Players.Gotou2" class="control-label">誤答数2</label>
+                        <input asp-for="Players.Gotou2" class="form-control" />
+                        <span asp-validation-for="Players.Gotou2" class="text-danger"></span>
+                    </div>
+                    <div class="col-sm">
+                        <label class="control-label">現在値</label>
+                        <div name="value">@Model.Players.Gotou2</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Players.Reset2" /> @Html.DisplayNameFor(model => model.Players.Reset2)
+                </label>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm">
+                        <label asp-for="Players.Gotou3" class="control-label">誤答数3</label>
+                        <input asp-for="Players.Gotou3" class="form-control" />
+                        <span asp-validation-for="Players.Gotou3" class="text-danger"></span>
+                    </div>
+                    <div class="col-sm">
+                        <label class="control-label">現在値</label>
+                        <div name="value">@Model.Players.Gotou3</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
